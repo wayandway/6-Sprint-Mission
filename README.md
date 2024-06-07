@@ -2,8 +2,6 @@
 
 by NextJS & TypeScript
 
-<br/>
-
 ## 프로젝트 구조 (`src/`)
 
 - `components/` : 전역으로 쓰이는 UI 컴포넌트
