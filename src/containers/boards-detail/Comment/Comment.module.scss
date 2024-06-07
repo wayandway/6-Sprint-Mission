@@ -9,6 +9,30 @@
   gap: 24px;
 }
 
+.emptyComment {
+  @include font-style(16px, 400, $grey-400);
+  text-align: center;
+  cursor: default;
+}
+
+.backButtonSection {
+  display: flex;
+  justify-content: center;
+}
+
+.backButton {
+  @include font-style(18px, 600, $white);
+  background-color: $blue;
+  width: 240px;
+  height: 48px;
+  border-radius: 40px;
+  margin: 40px 0;
+
+  &:hover {
+    background-color: $dark-blue;
+  }
+}
+
 .contentSection {
   display: flex;
   justify-content: space-between;

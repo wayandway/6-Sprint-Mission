@@ -8,10 +8,15 @@ import formatDate from "@/src/utils/formatDate";
 
 import kebabIcon from "@/public/svgs/kebab.svg";
 import defaultProfileIcon from "@/public/svgs/default-profile.svg";
+import commentEmptyIcon from "@/public/svgs/comment-empty.svg";
+import backIcon from "@/public/svgs/back-page.svg";
 
 export default function Comment() {
   const router = useRouter();
   const { id } = router.query;
+  const goToBoardsPage = () => {
+    router.push("/boards");
+  };
   const url = `/articles/${id}/comments?limit=3`;
 
   const fetchComments = useFetchData<CommentListResponse>(url);
@@ -22,7 +27,25 @@ export default function Comment() {
   }
 
   if (comments === undefined) {
-    return <>댓글이 없습니다.</>;
+    return (
+      <>
+        <Image
+          src={commentEmptyIcon}
+          alt="빈 댓글 아이콘"
+          width={140}
+          height={140}
+        />
+        <div className={styles.emptyComment}>
+          아직 댓글이 없어요, <br />
+          지금 댓글을 달아보세요!
+        </div>
+
+        <button className={styles.backButton} onClick={goToBoardsPage}>
+          목록으로 돌아가기
+          <Image src={backIcon} alt="뒤로 가기 아이콘" width={24} height={24} />
+        </button>
+      </>
+    );
   }
 
   return (
@@ -52,6 +75,13 @@ export default function Comment() {
           <hr className={styles.hr} />
         </>
       ))}
+
+      <div className={styles.backButtonSection}>
+        <button className={styles.backButton} onClick={goToBoardsPage}>
+          목록으로 돌아가기
+          <Image src={backIcon} alt="뒤로 가기 아이콘" width={24} height={24} />
+        </button>
+      </div>
     </div>
   );
 }
