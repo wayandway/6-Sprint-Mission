@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react";
+import Link from "next/link";
 import useFetchData from "@/src/hooks/useFetchData";
 import { ArticleListResponse } from "@/src/interfaces/Article.interface";
 import Article from "./Article";
@@ -46,7 +47,9 @@ export default function ArticleList() {
       <div className={styles.containerTitleSection}>
         <div className={styles.containerTitle}>게시글</div>
 
-        <Button>글쓰기</Button>
+        <Link href="/boards/create">
+          <Button>글쓰기</Button>
+        </Link>
       </div>
 
       <div className={styles.controlSection}>
