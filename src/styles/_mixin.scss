@@ -1,4 +1,6 @@
-@mixin font-style($size: 16px, $weight: 400, $color: var(--grey-800)) {
+@import "@/src/styles/_colors";
+
+@mixin font-style($size: 16px, $weight: 400, $color: $grey-800) {
   font-size: $size;
   font-weight: $weight;
   color: $color;
@@ -13,9 +15,9 @@
 @mixin drop-down-box {
   width: 130px;
   height: 42px;
-  border: 1px solid var(--grey-200);
+  border: 1px solid $grey-200;
   border-radius: 12px;
   padding: 8px 20px;
-  background-color: var(--white);
+  background-color: $white;
   cursor: pointer;
 }

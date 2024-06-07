@@ -1,9 +1,10 @@
 @import "@/src/styles/_mixin";
+@import "@/src/styles/_colors";
 
 .button {
-  @include font-style(16px, 600, var(--white));
+  @include font-style(16px, 600, $white);
   padding: 12px 24px;
-  background-color: var(--blue);
+  background-color: $blue;
   border-radius: 5px;
   width: max-content;
   cursor: pointer;
@@ -11,6 +12,6 @@
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: #0056b3;
+    background-color: $dark-blue;
   }
 }
