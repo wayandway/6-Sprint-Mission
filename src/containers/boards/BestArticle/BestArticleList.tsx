@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import useFetchData from "@/src/hooks/useFetchData";
 import { ArticleListResponse } from "@/src/interfaces/Article.interface";
 import BestArticle from "./BestArticle";
@@ -20,11 +20,12 @@ const getPageSize = () => {
 export default function BestArticleList() {
   const [pageSize, setPageSize] = useState<number>(getPageSize());
 
-  const fetchArticles = useFetchData<ArticleListResponse>(
-    `articles?page=1`,
-    pageSize,
-    "like"
+  const url = useMemo(
+    () => `articles?page=1&pageSize=${pageSize}&orderBy=like`,
+    [pageSize]
   );
+
+  const fetchArticles = useFetchData<ArticleListResponse>(url);
   const { data: ArticleList, isLoading } = fetchArticles;
 
   useEffect(() => {

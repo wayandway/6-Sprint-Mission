@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import useFetchData from "@/src/hooks/useFetchData";
 import { ArticleListResponse } from "@/src/interfaces/Article.interface";
 import Article from "./Article";
@@ -11,12 +11,16 @@ import styles from "./Article.module.scss";
 export default function ArticleList() {
   const [orderBy, setOrderBy] = useState("recent");
   const [searchTitle, setSearchTitle] = useState("");
-  const fetchArticles = useFetchData<ArticleListResponse>(
-    `articles?page=1`,
-    10,
-    orderBy,
-    searchTitle
-  );
+
+  const url = useMemo(() => {
+    let baseUrl = `articles?page=1&pageSize=10&orderBy=${orderBy}`;
+    if (searchTitle) {
+      baseUrl += `&keyword=${searchTitle}`;
+    }
+    return baseUrl;
+  }, [orderBy, searchTitle]);
+
+  const fetchArticles = useFetchData<ArticleListResponse>(url);
   const { data: ArticleList, isLoading } = fetchArticles;
   const orderOptions = {
     최신순: "recent",
