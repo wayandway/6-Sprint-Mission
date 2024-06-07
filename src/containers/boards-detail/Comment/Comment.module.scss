@@ -1,0 +1,44 @@
+@import "@/src/styles/_mixin";
+@import "@/src/styles/_colors";
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+}
+
+.contentSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .content {
+    @include font-style(14px, 400, $grey-800);
+  }
+}
+
+.writerSection {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  .writer {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    .nickname {
+      @include font-style(12px, 400, $grey-600);
+    }
+
+    .createdAt {
+      @include font-style(12px, 400, $grey-400);
+    }
+  }
+}
+
+.hr {
+  border: 1px solid $grey-200;
+}
