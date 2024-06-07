@@ -18,8 +18,7 @@ export default function Article({ article }: { article: Article }) {
           <div
             className={styles.image}
             style={{
-              border:
-                articleImage === "" ? "none" : "1px solid var(--grey-200)",
+              border: articleImage === "" ? "none" : "1px solid #e5e7eb",
             }}
           >
             {articleImage && (

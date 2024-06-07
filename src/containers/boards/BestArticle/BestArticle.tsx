@@ -20,10 +20,8 @@ export default function BestArticle({ article }: { article: Article }) {
           <div
             className={styles.image}
             style={{
-              border:
-                articleImage === "" ? "none" : "1px solid var(--grey-200)",
-              backgroundColor:
-                articleImage === "" ? "var(--grey-50)" : "var(--white)",
+              border: articleImage === "" ? "none" : "1px solid #e5e7eb",
+              backgroundColor: articleImage === "" ? "#f9fafb" : "#ffffff",
             }}
           >
             {articleImage && (
