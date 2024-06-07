@@ -1,0 +1,145 @@
+@import "@/src/styles/_mixin";
+@import "@/src/styles/_colors";
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 100px;
+}
+
+.sectionTitle {
+  @include font-style(18px, 700, $grey-800);
+  margin-bottom: 12px;
+}
+
+.headerSection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .headerTitle {
+    @include font-style(20px, 700, $grey-800);
+    cursor: default;
+  }
+}
+
+.titleInputSection {
+  .titleInput {
+    width: 100%;
+    background-color: $grey-100;
+    border-radius: 12px;
+    padding: 16px 24px;
+    height: 56px;
+
+    &:focus {
+      outline: none;
+    }
+
+    &::placeholder {
+      color: $grey-400;
+      font-size: 16px;
+    }
+  }
+}
+
+.contentInputSection {
+  .contentInput {
+    width: 100%;
+    resize: none;
+    background-color: $grey-100;
+    border-radius: 12px;
+    padding: 16px 24px;
+    height: 282px;
+
+    &:focus {
+      outline: none;
+    }
+
+    &::placeholder {
+      color: $grey-400;
+      font-size: 16px;
+    }
+  }
+}
+
+.imageInputSection {
+  input {
+    display: none;
+  }
+
+  .addImageSection {
+    display: flex;
+    gap: 16px;
+  }
+
+  .addImage {
+    width: 282px;
+    height: 282px;
+    background-color: $grey-100;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    .plusButton {
+      cursor: pointer;
+
+      &:hover {
+        filter: opacity(60%);
+      }
+    }
+
+    div {
+      @include font-style(16px, 400, $grey-400);
+      cursor: default;
+    }
+  }
+
+  .previewImage {
+    border-radius: 12px;
+  }
+}
+
+.previewImageSection {
+  position: relative;
+
+  .xButton {
+    @include font-style(16px, 400, $white);
+    position: absolute;
+    right: 12px;
+    top: 10px;
+    background-color: $grey-200;
+    width: 18px;
+    border-radius: 50%;
+    opacity: 90%;
+
+    &:hover {
+      background-color: $grey-600;
+      opacity: 100%;
+    }
+  }
+}
+
+.submitButton {
+  @include font-style(16px, 600, $white);
+  padding: 12px 24px;
+  background-color: $blue;
+  border-radius: 8px;
+  width: max-content;
+  cursor: pointer;
+
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: $dark-blue;
+  }
+
+  &:disabled {
+    background-color: $grey-400;
+    cursor: not-allowed;
+  }
+}
