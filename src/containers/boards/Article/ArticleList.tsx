@@ -39,7 +39,13 @@ export default function ArticleList() {
     return <Spinner />;
   }
   if (ArticleList?.totalCount === 0) {
-    return <>게시글이 없습니다.</>;
+    return (
+      <>
+        <SearchBar keyword={handleSearchTitle} />
+        <br />
+        게시글이 없습니다.
+      </>
+    );
   }
 
   return (
