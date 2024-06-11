@@ -1,0 +1,60 @@
+@import "@/src/styles/_mixin";
+@import "@/src/styles/_colors";
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 64px 0 24px;
+  gap: 16px;
+}
+
+.sectionTitle {
+  @include font-style(16px, 600, $grey-900);
+  cursor: default;
+}
+
+.commentContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 16px;
+}
+
+.commentInput {
+  width: 100%;
+  resize: none;
+  background-color: $grey-100;
+  border-radius: 12px;
+  padding: 16px 24px;
+  height: 104px;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::placeholder {
+    color: $grey-400;
+    font-size: 16px;
+  }
+}
+
+.submitButton {
+  @include font-style(16px, 600, $white);
+  padding: 12px 24px;
+  background-color: $blue;
+  border-radius: 8px;
+  width: max-content;
+  cursor: pointer;
+
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: $dark-blue;
+  }
+
+  &:disabled {
+    background-color: $grey-400;
+    cursor: not-allowed;
+  }
+}

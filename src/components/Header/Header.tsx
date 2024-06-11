@@ -15,8 +15,8 @@ export default function Header() {
     return {
       color:
         typeof window !== "undefined" && window.location.pathname === path
-          ? "var(--blue)"
-          : "var(--grey-600)",
+          ? "#3692ff"
+          : "#4b5563",
     };
   };
 

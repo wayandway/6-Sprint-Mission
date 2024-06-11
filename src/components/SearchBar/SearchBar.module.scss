@@ -1,4 +1,5 @@
 @import "@/src/styles/_mixin";
+@import "@/src/styles/_colors";
 
 .container {
   display: flex;
@@ -7,10 +8,10 @@
 }
 
 .searchBar {
-  @include font-style(16px, 400, var(--grey-400));
+  @include font-style(16px, 400, $grey-400);
   flex-grow: 1;
   height: 42px;
-  background-color: var(--grey-100);
+  background-color: $grey-100;
   padding: 9px 16px 9px 44px;
   border-radius: 12px;
 
@@ -19,7 +20,7 @@
   }
 
   &::placeholder {
-    color: var(--gray-200);
+    color: $grey-400;
     font-size: 16px;
   }
 }
