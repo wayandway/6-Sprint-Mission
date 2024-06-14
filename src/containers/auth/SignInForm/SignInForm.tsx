@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
 import { useAuth } from "@/src/contexts/AuthProvider";
 import styles from "../SignInUpForm.module.scss";
@@ -15,6 +18,7 @@ interface SignInFormValues {
 
 const SignInForm: React.FC = () => {
   const { signIn } = useAuth();
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -22,6 +26,15 @@ const SignInForm: React.FC = () => {
   } = useForm<SignInFormValues>({
     mode: "onChange", // 입력 값이 변경될 때마다 유효성 검사를 수행
   });
+
+  // 토큰이 있으면 홈으로 리디렉션
+  useEffect(() => {
+    const token = localStorage.getItem("accessToken");
+    if (token) {
+      toast.success("이미 로그인된 상태입니다.");
+      router.push("/");
+    }
+  }, [router]);
 
   const onSubmit: SubmitHandler<SignInFormValues> = async (data) => {
     try {

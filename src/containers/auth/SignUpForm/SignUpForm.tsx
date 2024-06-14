@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
@@ -19,7 +19,18 @@ const SignUpForm: React.FC = () => {
     handleSubmit,
     watch,
     formState: { errors, isValid },
-  } = useForm<SignUpFormInterface>();
+  } = useForm<SignUpFormInterface>({
+    mode: "onChange", // 입력 값이 변경될 때마다 유효성 검사를 수행
+  });
+
+  // 토큰이 있으면 홈으로 리디렉션
+  useEffect(() => {
+    const token = localStorage.getItem("accessToken");
+    if (token) {
+      toast.success("이미 로그인된 상태입니다.");
+      router.push("/");
+    }
+  }, [router]);
 
   const onSubmit: SubmitHandler<SignUpFormInterface> = async (data) => {
     try {
